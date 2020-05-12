@@ -34,7 +34,7 @@ defmodule Snowflake do
   @doc """
   Updates machine id of the current node.
   """
-  @spec update_machine_id(integer) :: {:ok, integer}
+  @spec update_machine_id(integer) :: {:ok, integer} | {:error, :backwards_clock}
   def update_machine_id(new_machine_id) do
     GenServer.call(Snowflake.Generator, {:update_machine_id, new_machine_id})
   end

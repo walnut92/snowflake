@@ -44,9 +44,6 @@ defmodule Snowflake.Generator do
 
       {:error, :backwards_clock} ->
         {:reply, {:error, :backwards_clock}, state}
-
-      error ->
-        {:reply, error, state}
     end
   end
 
