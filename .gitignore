@@ -4,3 +4,14 @@
 erl_crash.dump
 *.ez
 doc
+
+# dialyxir PLT files
+# https://github.com/jeremyjh/dialyxir#continuous-integration
+/**/priv/plts/*.plt
+/**/priv/plts/*.plt.hash
+
+# VS-code IDE
+*.code-workspace
+
+# Elixir Language Server
+.elixir_ls

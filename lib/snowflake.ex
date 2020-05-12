@@ -18,8 +18,7 @@ defmodule Snowflake do
   Generates a snowflake ID, each call is guaranteed to return a different ID
   that is sequantially larger than the previous ID.
   """
-  @spec next_id() :: {:ok, integer} |
-                     {:error, :backwards_clock}
+  @spec next_id() :: {:ok, integer} | {:error, :backwards_clock}
   def next_id() do
     GenServer.call(Snowflake.Generator, :next_id)
   end
@@ -30,5 +29,13 @@ defmodule Snowflake do
   @spec machine_id() :: {:ok, integer}
   def machine_id() do
     GenServer.call(Snowflake.Generator, :machine_id)
+  end
+
+  @doc """
+  Updates machine id of the current node.
+  """
+  @spec update_machine_id(integer) :: {:ok, integer}
+  def update_machine_id(new_machine_id) do
+    GenServer.call(Snowflake.Generator, {:update_machine_id, new_machine_id})
   end
 end
